@@ -1,0 +1,54 @@
+<!-- Currently has hardcoded examples before the DB is setup, this will probably will be removed, its just a placeholder -->
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+<h1>temporary home page</h1>
+<div class="card-group">
+    <div class="card" style="width: 15rem; ">
+        <img class="card-img-top"
+            src="https://images-na.ssl-images-amazon.com/images/I/51vD3Z9Sb+L._SX356_BO1,204,203,200_.jpg"
+            class="img-fluid" alt="book cover">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Book Title: Organic Chemistry</li>
+            <li class="list-group-item">ISBN-10: 9352531965</li>
+            <li class="list-group-item">Condition: Fair</li>
+        </ul>
+        <div class="card-body">
+            <a href="#" class="card-link">Inquiry About Buying</a>
+        </div>
+    </div>
+
+    <div class="card" style="width: 15rem; ">
+        <img class="card-img-top"
+            src="data:image/webp;base64,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"
+            class="img-fluid" alt="book cover">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Book Title: Calculus: An Intuitive and Physical Approach</li>
+            <li class="list-group-item">ISBN-10: 9780486404530</li>
+            <li class="list-group-item">Condition: Good</li>
+        </ul>
+        <div class="card-body">
+            <a href="#" class="card-link">Inquiry About Buying</a>
+        </div>
+    </div>
+
+    <div class="card" style="width: 15rem; ">
+        <img class="card-img-top"
+            src="https://images-na.ssl-images-amazon.com/images/I/51FWXX9KWVL._SX384_BO1,204,203,200_.jpg"
+            class="img-fluid" alt="book cover">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Book Title: Compilers: Principles, Techniques, and Tools</li>
+            <li class="list-group-item">ISBN-10: 0201100886</li>
+            <li class="list-group-item">Condition: Bad</li>
+        </ul>
+        <div class="card-body">
+            <a href="#" class="card-link">Inquiry About Buying</a>
+        </div>
+    </div>
+
+
+</div>
+{% endblock content %}
