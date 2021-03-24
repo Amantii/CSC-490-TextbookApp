@@ -1,0 +1,31 @@
+<!-- handles home page content, currently hardcoded, will be removed soon 
+https://codepen.io/mhrkit/pen/GGqdvr
+https://codepen.io/techiediaries/pen/MWgVKZW
+-->
+{% extends "layout.html" %}
+
+{% block content %}
+    <h1>Home page</h1>
+    <div class="card-group">
+        <div class="row">
+            {% for post in posts %}
+                <div class="col-md-3">
+                    <div class="card" style="width: 15rem; ">
+                        <img class="card-img-top"
+                             src="{{ url_for('static', filename='posts/'+post.cover_photo) }}"
+                             class="img-fluid"
+                             alt="book cover">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Book Title: {{ post.title }}</li>
+                            <li class="list-group-item">ISBN-10: {{ post.isbn }}</li>
+                            <li class="list-group-item">Condition: {{ post.book_condition }}</li>
+                        </ul>
+                        <div class="card-body">
+                            <a href="#" class="card-link">Inquiry About Buying</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
