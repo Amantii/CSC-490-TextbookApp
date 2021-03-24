@@ -8,7 +8,6 @@ def load_user(user_id):
     """user sessions"""
     return User.query.get(int(user_id))
 
-print('test')
 class User(db.Model, UserMixin):
     """User database model"""
     id = db.Column(db.Integer, primary_key=True)
