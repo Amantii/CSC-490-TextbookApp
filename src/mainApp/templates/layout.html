@@ -17,6 +17,9 @@
     <!-- CUSTOM FONT FOR HOMEPAGE, ETC.. FROM GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.gstatic.com"> 
     <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    {% block css %}
+
+    {% endblock %}
 
     <!-- change page title as needed -->
     {% if title %}
@@ -65,7 +68,7 @@
     <!-- warning message popup -->
     <main role="main" class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12 mt-5">
                 {% with messages =get_flashed_messages(with_categories=true) %}
                 {%if messages%}
                 {%for category, message in messages%}

@@ -29,70 +29,27 @@ https://codepen.io/techiediaries/pen/MWgVKZW
 
 <!-- CARDS WITH TEXTBOOK DATA (HARDCODED BOOKS FOR NOW)-->
 <div class="container" style="padding-top: 20px; padding-bottom: 20px;">
-  <div class="card-deck">
-    <div class="row row-cols-4 row-cols-md-4">
-      <div class="col">
-        <div class="card">
-          <img class="card-img-top"
-            src="https://images-na.ssl-images-amazon.com/images/I/51vD3Z9Sb+L._SX356_BO1,204,203,200_.jpg" class="img-fluid"
-            alt="book cover">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Book Title: Organic Chemistry</li>
-            <li class="list-group-item">ISBN-10: 9352531965</li>
-            <li class="list-group-item">Condition: Fair</li>
-          </ul>
-          <div class="card-body">
-            <a href="#" class="btn btn-primary">Inquiry About Buying</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img class="card-img-top"
-            src="https://images-na.ssl-images-amazon.com/images/I/51FWXX9KWVL._SX384_BO1,204,203,200_.jpg" class="img-fluid"
-            alt="book cover">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Book Title: Compilers: Principles, Techniques, and Tools</li>
-            <li class="list-group-item">ISBN-10: 0201100886</li>
-            <li class="list-group-item">Condition: Bad</li>
-          </ul>
-          <div class="card-body">
-            <a href="#" class="btn btn-primary">Inquiry About Buying</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img class="card-img-top"
-            src="https://images-na.ssl-images-amazon.com/images/I/51FWXX9KWVL._SX384_BO1,204,203,200_.jpg" class="img-fluid"
-            alt="book cover">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Book Title: Compilers: Principles, Techniques, and Tools</li>
-            <li class="list-group-item">ISBN-10: 0201100886</li>
-            <li class="list-group-item">Condition: Bad</li>
-          </ul>
-          <div class="card-body">
-            <a href="#" class="btn btn-primary">Inquiry About Buying</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img class="card-img-top"
-            src="https://images-na.ssl-images-amazon.com/images/I/51FWXX9KWVL._SX384_BO1,204,203,200_.jpg" class="img-fluid"
-            alt="book cover">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Book Title: Compilers: Principles, Techniques, and Tools</li>
-            <li class="list-group-item">ISBN-10: 0201100886</li>
-            <li class="list-group-item">Condition: Bad</li>
-          </ul>
-          <div class="card-body">
-            <a href="#" class="btn btn-primary">Inquiry About Buying</a>
-          </div>
-        </div>
-      </div>
+  <div class="card-group">
+    <div class="row">
+        {% for post in posts %}
+            <div class="col-md-3">
+                <div class="card" style="width: 15rem; ">
+                    <img class="card-img-top"
+                         src="{{ url_for('static', filename='posts/'+post.cover_photo) }}"
+                         class="img-fluid"
+                         alt="book cover">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Book Title: {{ post.title }}</li>
+                        <li class="list-group-item">ISBN-10: {{ post.isbn }}</li>
+                        <li class="list-group-item">Condition: {{ post.book_condition }}</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="#" class="card-link">Inquiry About Buying</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
-  </div>
 </div>
-
+</div>
 {% endblock content %}
