@@ -58,6 +58,10 @@
             </div>
         </nav>
     </header>
+    
+
+    <!-- MAIN BODY CONTENT (MOVED; USED TO BE LINE 69)-->
+    {% block content %}
     <!-- warning message popup -->
     <main role="main" class="container">
         <div class="row">
@@ -74,9 +78,7 @@
             </div>
         </div>
     </main>
-
-    <!-- MAIN BODY CONTENT (MOVED; USED TO BE LINE 69)-->
-    {% block content %}{% endblock %}
+    {% endblock %}
 
     <!-- bootstrap requirements -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
