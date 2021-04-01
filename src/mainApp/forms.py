@@ -43,7 +43,7 @@ class SellForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired(), Length(min=2, max=200)])
     isbn = IntegerField('ISBN', validators=[DataRequired()])
     book_price = IntegerField('Book Price', validators=[DataRequired()])
-    book_condition = SelectField(u'Book Condition', choices=[('Bad', 'Bad'), ('Good', 'Good'), ('New', 'New')],
+    book_condition = SelectField(u'Book Condition', choices=[('Poor', 'Poor'), ('Good', 'Good'), ('New', 'New')],
                                  validators=[DataRequired()])
     contact = StringField('Email for Contact', validators=[DataRequired(), Email()])
     cover_page = FileField(validators=[FileRequired()])
