@@ -98,7 +98,6 @@ def sell_page():
                             user_id=current_user.get_id())
                 db.session.add(post)
                 db.session.commit()
-                flash('Post Added Successfully', 'success')
                 return redirect(url_for('home_page'))
             else:
                 flash('File with same name already Exists')
