@@ -15,21 +15,30 @@
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
                             <img src="{{ url_for('static', filename='uploads/'+ profile.image_file) }}" alt="Admin"
-                                class="rounded-circle" width="150">
+                                class="rounded" width="150">
                             <div class="mt-3">
                                 <h4>{{ profile.username }}</h4>
                                 <p class="text-secondary mb-1">Email for Contact</p>
                                 <p class="text-muted font-size-sm">{{ profile.email }}</p>
                                 {# <button class="btn btn-primary">Follow</button>#}
-                                <button class="btn btn-outline-primary">Message</button>
+                                <button class="btn btn-outline-primary">Change Profile Picture</button>
+                                {#<button class="btn btn-outline-primary">Message</button>#}
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <h5 class="card-title">Reviews</h5>
+                            <p class="card-text">Coming Soon...</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-9">
                 <div class="container">
-                    <h3 style="text-align: center;">YOUR BOOKSHELF</h3>
+                    <h3 style="text-align: center;">Your Bookshelf</h3>
                     <hr>
                     <div class="container">
                         <div class="card-group">
@@ -49,7 +58,10 @@
                                             <h6 class="card-subtitle mb-2 text-muted">ISBN-10: <b>{{ post.isbn }}</b>
                                             </h6>
                                             <h6 class="card-subtitle mb-2 text-muted">Condition:
-                                                <b>{{post.book_condition}}</b></h6>
+                                                <b>{{post.book_condition}}</b>
+                                            </h6>
+                                            <a href="delete_post/{{ post.id }}"
+                                                class="card-link btn btn-outline-primary">Edit</a>
                                             <a href="delete_post/{{ post.id }}"
                                                 class="card-link btn btn-outline-primary">Delete</a>
                                         </div>
