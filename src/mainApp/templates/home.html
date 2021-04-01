@@ -21,57 +21,45 @@ https://codepen.io/techiediaries/pen/MWgVKZW
 <!-- SEARCH BAR -->
 <div class="container" style="padding-top: 15px; padding-bottom: 15px;">
   <div class="input-group">
-    <input type="search" class="form-control rounded" placeholder="Looking for something more specific?" aria-label="Search"
-      aria-describedby="search-addon"/>
+    <input type="search" class="form-control rounded" placeholder="Looking for something more specific?"
+      aria-label="Search" aria-describedby="search-addon" />
     <button type="button" class="btn btn-outline-primary" style="padding-left: 5px;">search</button>
   </div>
 </div>
 
-<div class="container">
-  <!-- warning message popup -->
-  <main role="main" class="container">
-    <div class="row">
-      <div class="col-md-12 mt-5">
-        {% with messages =get_flashed_messages(with_categories=true) %}
-        {%if messages%}
-        {%for category, message in messages%}
-        <div class="alert alert-{{category}}">
-            <button type="button" class="close" data-dismiss="alert" aria-label="close">
-                <span aria-hidden="true">x</span>
-            </button>
-          {{message}}
-        </div>
-        {% endfor %}
-        {% endif %}
-        {%endwith%}
-      </div>
-    </div>
-  </main>
+<div class="row" style="padding-bottom: 20px;">
+  <div class="col">
+    <hr>
+  </div>
+  <div class="col-auto custom-header-font">CHECK OUT SOME RECENTLY POSTED TEXTBOOKS!</div>
+  <div class="col">
+    <hr>
+  </div>
 </div>
 
-<!-- CARDS WITH TEXTBOOK DATA -->
-<div class="container" style="padding-top: 20px; padding-bottom: 20px;">
-  <div class="card-group">
-    <div class="row">
-        {% for post in posts %}
-            <div class="col-md-3">
-                <div class="card" style="width: 15rem; ">
-                    <img class="card-img-top"
-                         src="{{ url_for('static', filename='posts/'+post.cover_photo) }}"
-                         class="img-fluid"
-                         alt="book cover">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Book Title: {{ post.title }}</li>
-                        <li class="list-group-item">ISBN-10: {{ post.isbn }}</li>
-                        <li class="list-group-item">Condition: {{ post.book_condition }}</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Inquiry About Buying</a>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
+<div class="container-fluid">
+  <!-- Row for the card-->
+  <div class="row">
+    {% for post in posts %}
+    <!-- Column for card-->
+    <div class="col-sm-6 col-lg-3 py-2">
+      <div class="card mx-auto h-100 shadow-lg p-3 mb-5 rounded" style="width:15rem;">
+        <div class="wrapper">
+          <img class="card-img-top" src="{{ url_for('static', filename='posts/'+post.cover_photo) }}" class="img-fluid"
+          alt="book cover">
+          </img>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><b>{{ post.title }}</b></h5>
+          <h6 class="card-subtitle mb-2 text-muted">ISBN-10: <b>{{ post.isbn }}</b></h6>
+          <h6 class="card-subtitle mb-2 text-muted">Condition: <b>{{ post.book_condition }}</b></h6>
+          <a href="mailto:{{ post.contact }}" class="card-link btn btn-outline-primary">Interested?</a>
+        </div>
+      </div>
     </div>
+    {% endfor %}
+  </div>
 </div>
+
 </div>
 {% endblock content %}
