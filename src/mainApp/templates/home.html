@@ -5,27 +5,61 @@ https://codepen.io/techiediaries/pen/MWgVKZW
 {% extends "layout.html" %}
 
 {% block content %}
-    <h1>Home page</h1>
-    <div class="card-group">
-        <div class="row">
-            {% for post in posts %}
-                <div class="col-md-3">
-                    <div class="card" style="width: 15rem; ">
-                        <img class="card-img-top"
-                             src="{{ url_for('static', filename='posts/'+post.cover_photo) }}"
-                             class="img-fluid"
-                             alt="book cover">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Book Title: {{ post.title }}</li>
-                            <li class="list-group-item">ISBN-10: {{ post.isbn }}</li>
-                            <li class="list-group-item">Condition: {{ post.book_condition }}</li>
-                        </ul>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Inquiry About Buying</a>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
+
+<!-- HEADER -->
+<header class="masthead">
+  <div class="container h-100">
+    <div class="row h-75 align-items-center">
+      <div class="col-12 text-center">
+        <h1 class="font-weight-light custom-header-font" style="font-size: 40px;">Say Hello To Affordable Textbooks</h1>
+        <p class="lead custom-header-font">Never Overpay For Textbooks Again</p>
+      </div>
     </div>
+  </div>
+</header>
+
+<!-- SEARCH BAR -->
+<div class="container" style="padding-top: 15px; padding-bottom: 15px;">
+  <div class="input-group">
+    <input type="search" class="form-control rounded" placeholder="Looking for something more specific?"
+      aria-label="Search" aria-describedby="search-addon" />
+    <button type="button" class="btn btn-outline-primary" style="padding-left: 5px;">search</button>
+  </div>
+</div>
+
+<div class="row" style="padding-bottom: 20px;">
+  <div class="col">
+    <hr>
+  </div>
+  <div class="col-auto custom-header-font">CHECK OUT SOME RECENTLY POSTED TEXTBOOKS!</div>
+  <div class="col">
+    <hr>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <!-- Row for the card-->
+  <div class="row">
+    {% for post in posts %}
+    <!-- Column for card-->
+    <div class="col-sm-6 col-lg-3 py-2">
+      <div class="card mx-auto h-100 shadow-lg p-3 mb-5 rounded" style="width:15rem;">
+        <div class="wrapper">
+          <img class="card-img-top" src="{{ url_for('static', filename='posts/'+post.cover_photo) }}" class="img-fluid"
+          alt="book cover">
+          </img>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><b>{{ post.title }}</b></h5>
+          <h6 class="card-subtitle mb-2 text-muted">ISBN-10: <b>{{ post.isbn }}</b></h6>
+          <h6 class="card-subtitle mb-2 text-muted">Condition: <b>{{ post.book_condition }}</b></h6>
+          <a href="mailto:{{ post.contact }}" class="card-link btn btn-outline-primary">Interested?</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+</div>
 {% endblock content %}

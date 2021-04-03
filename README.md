@@ -1,6 +1,6 @@
 # CSC-490-TextbookApp
 
-Cutting out the middle man and making it easier to get the textbooks you need!
+Cutting out the middle man and making it easier to get the textbooks you need.
 
 ## Authors
 

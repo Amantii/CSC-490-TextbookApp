@@ -98,7 +98,6 @@ def sell_page():
                             user_id=current_user.get_id())
                 db.session.add(post)
                 db.session.commit()
-                flash('Post Added Successfully', 'success')
                 return redirect(url_for('home_page'))
             else:
                 flash('File with same name already Exists')
@@ -121,7 +120,14 @@ def delete_post(id):
     Post.query.filter_by(id=id).delete()
     db.session.commit()
     flash('Post Deleted Successfully')
-    return redirect(url_for('profile_page'))    
+    return redirect(url_for('profile_page'))
+
+# TO-DO (ALEX) --> ADD A EDIT ROUTE FOR USERS TO UPDATE POSTS
+"""
+@app.route("/edit_post/<id>", methods=['GET', 'POST'])
+@login_required
+def edit_post(id):
+"""
 
 
 @app.route("/profile")

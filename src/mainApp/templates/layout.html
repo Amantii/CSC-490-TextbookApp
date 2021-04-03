@@ -12,10 +12,15 @@
     <!-- bootstrap requirements -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    <link href="{{ url_for('static', filename='/main.css') }}" rel="stylesheet">
     {% block css %}
 
     {% endblock %}
+
+    <!-- CUSTOM FONT FOR HOMEPAGE, ETC.. FROM GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+
     <!-- change page title as needed -->
     {% if title %}
     <title>Spartan Textbooks - {{ title }}</title>
@@ -28,9 +33,9 @@
 
 <body>
     <header class="site-header">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top border-bottom">
             <div class="container">
-                <a class="navbar-brand mr-4" href="/">Spartan Books</a>
+                <a class="navbar-brand mr-4" href="/">Spartan Textbooks</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
                     aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -45,10 +50,10 @@
                     <!-- change what shows up in navbar based on if user is logged in or not -->
                     <div class="navbar-nav">
                         {% if current_user.is_authenticated %}
-                        <a class="nav-item nav-link" href="{{ url_for('logout_page') }}">Logout</a>
+                        <a class="btn btn-pill btn-outline-secondary custom-btn" href="{{ url_for('logout_page') }}">Logout</a>
                         <a class="nav-item nav-link" href="{{ url_for('profile_page') }}">Profile</a>
                         {% else %}
-                        <a class="btn btn-pill btn-primary" href="{{ url_for('login_page') }}">Login</a>
+                        <a class="btn btn-pill btn-outline-secondary custom-btn" href="{{ url_for('login_page') }}">Login</a>
                         <a class="nav-item nav-link" href="{{ url_for('register_page') }}">Register</a>
                         {% endif %}
                     </div>
@@ -56,23 +61,32 @@
             </div>
         </nav>
     </header>
-    <!-- warning message popup -->
-    <main role="main" class="container">
-        <div class="row">
+
+    <div class="container" style="padding-top: 10px;">
+        <!-- warning message popup -->
+        <main role="main" class="container">
+          <div class="row">
             <div class="col-md-12 mt-5">
-                {% with messages =get_flashed_messages(with_categories=true) %}
-                {%if messages%}
-                {%for category, message in messages%}
-                <div class="alert alert-{{category}}">
-                    {{message}}
-                </div>
-                {% endfor %}
-                {% endif %}
-                {%endwith%}
-                {% block content %}{% endblock %}
+              {% with messages =get_flashed_messages(with_categories=true) %}
+              {%if messages%}
+              {%for category, message in messages%}
+              <div class="alert alert-{{category}}">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                      <span aria-hidden="true">x</span>
+                  </button>
+                {{message}}
+              </div>
+              {% endfor %}
+              {% endif %}
+              {%endwith%}
             </div>
-        </div>
-    </main>
+          </div>
+        </main>
+      </div>
+
+    <!-- MAIN BODY CONTENT (MOVED; USED TO BE LINE 69)-->
+    {% block content %}{% endblock %}
+
     <!-- bootstrap requirements -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
