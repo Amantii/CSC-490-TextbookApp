@@ -2,7 +2,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, IntegerField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-from mainApp.models import User, Post
+from mainApp.models import User, Post, Review
 from flask_wtf.file import FileField, FileRequired
 
 
@@ -65,3 +65,12 @@ class SellForm(FlaskForm):
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.isbn}', '{self.book_price}', '{self.book_condition}', '{self.contact}')"
+
+class ReviewForm(FlaskForm):
+    ''' check review form '''
+    review = StringField('Review', validators=[DataRequired(), Length(min=1, max=250)])
+    rating = IntegerField('Rating', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+    def __repr__(self):
+        return f"Review('{self.review}', '{self.rating}', '{self.user_id}')"

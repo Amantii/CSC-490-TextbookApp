@@ -1,8 +1,8 @@
 # main flask app
 from flask import render_template, url_for, flash, redirect, request
 from mainApp import app, db, bcrypt
-from mainApp.forms import RegistrationForm, LoginForm, SellForm
-from mainApp.models import User, Post
+from mainApp.forms import RegistrationForm, LoginForm, SellForm, ReviewForm
+from mainApp.models import User, Post, Review
 from flask_login import login_user, current_user, logout_user, login_required
 from werkzeug.utils import secure_filename
 import os
@@ -136,5 +136,11 @@ def profile_page():
     '''All posts of a logged in user are fetching from data base'''
     posts = Post.query.filter_by(user_id=current_user.get_id())
     profile = User.query.filter_by(username=current_user.username).first()
+    form = ReviewForm()
+    if form.validate_on_submit():
+        review = Review(review=form.review.data, rating=form.rating.data, user_id=current_user.get_id())
+        db.session.add(review)
+        db.session.commit()
+        return redirect(url_for('profile_page'))
     print(profile)
-    return render_template('profile.html', title='Profile', posts=posts, profile=profile)
+    return render_template('profile.html', title='Profile', posts=posts, profile=profile, form=form)

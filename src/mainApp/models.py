@@ -38,3 +38,14 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.isbn}', '{self.date_posted}', '{self.book_price}', '{self.book_condition}', '{self.contact}', '{self.cover_photo}', '{self.user_id}')"
+
+
+class Review(db.Model):
+    """User review model"""
+    id = db.Column(db.Integer, primary_key=True)
+    review = db.Column(db.Text, nullable=False)
+    rating = db.Column(db.Integer, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    def __repr__(self):
+        return f"Review('{self.review}', '{self.rating}', '{self.user_id}')"

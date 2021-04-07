@@ -31,7 +31,22 @@
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
                             <h5 class="card-title">Reviews</h5>
-                            <p class="card-text">Coming Soon...</p>
+                            <div class="form-group">
+                                <textarea autocomplete="off" autofocus class="form-control" name="review_text"
+                            placeholder="Leave a review" type="text" id="review_text"></textarea>
+                            </div>
+                            <div class="form-group" style="padding-bottom:125px;">
+                                <h6>Rating</h6>
+                                <select class="form-control align-items-center" name="review_rating" id="review_rating">
+                                    <option selected disabled>Select One</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary btn-block" type="submit">Submit</button>
                         </div>
                     </div>
                 </div>
@@ -75,4 +90,18 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="container">
+    <h3>Review</h3>
+    <hr>
+    <blockquote class="blockquote mb-0 card-body">
+        <p></p>
+        <footer class="blockquote-footer">
+            <small class="text-muted">
+                <cite title="User"></cite> You rated it 
+            </small>
+        </footer>
+    </blockquote>
+</div>
     {% endblock %}
