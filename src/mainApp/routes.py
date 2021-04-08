@@ -138,3 +138,7 @@ def profile_page():
     profile = User.query.filter_by(username=current_user.username).first()
     print(profile)
     return render_template('profile.html', title='Profile', posts=posts, profile=profile)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
