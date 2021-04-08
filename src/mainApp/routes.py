@@ -96,7 +96,7 @@ def register_page():
 @app.route('/buy/')
 def buy_page():
     page = request.args.get('page', 1, type=int)
-    posts = Post.query.paginate(page=page, per_page=8)
+    posts = Post.query.paginate(page=page, per_page=9)
     return render_template('buy.html', title='Buy', posts=posts)
 
 
