@@ -22,7 +22,7 @@ def home_page():
     return render_template('home.html', posts=posts)
 
 
-@app.route('/about')
+@app.route('/about/')
 def about_page():
     return render_template('about.html', title='About')
 
@@ -78,9 +78,11 @@ def register_page():
     return render_template('register.html', title='Register', form=form)
 
 
-@app.route('/buy')
+@app.route('/buy/')
 def buy_page():
-    return render_template('buy.html', title='Buy')
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.paginate(page=page, per_page=8)
+    return render_template('buy.html', title='Buy', posts=posts)
 
 
 @app.route('/sell', methods=['GET', 'POST'])
@@ -114,6 +116,7 @@ def logout_page():
     logout_user()
     return redirect(url_for('home_page'))
 
+
 @app.route("/delete_post/<id>", methods=['GET', 'POST'])
 @login_required
 def delete_post(id):
@@ -121,6 +124,7 @@ def delete_post(id):
     db.session.commit()
     flash('Post Deleted Successfully')
     return redirect(url_for('profile_page'))
+
 
 # TO-DO (ALEX) --> ADD A EDIT ROUTE FOR USERS TO UPDATE POSTS
 """

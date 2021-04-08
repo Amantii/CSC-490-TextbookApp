@@ -1,13 +1,94 @@
-<!-- handles buy page content -->
+<!-- handles user account page content -->
 {% extends "layout.html" %}
+
+{% block css %}
+
+{% endblock %}
 
 {% block content %}
 
-<div class="container" style="padding-top: 20px;">
-    <div class="container">
-        <h1>temporary buy page</h1>
-        <p>temporary buy page</p>
+<div class="container" style="background-color: white; padding-top: 20px;">
+    <div class="main-body">
+        <div class="row gutters-sm">
+            <div class="col-md-3 mb-3" style="padding-top: 100px;">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <div class="mt-3">
+                                <div class="input-group">
+                                    <input type="search" class="form-control rounded" placeholder="Search"
+                                      aria-label="Search" aria-describedby="search-addon" />
+                                    <button type="button" class="btn btn-outline-primary" style="padding-left: 10px;">search</button>
+                                  </div>
+                                <hr>    
+                                <div class="dropdown">
+                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                      Subject
+                                    </a>
+                                  </div>
+                                <hr>
+                                <div class="dropdown">
+                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                      Condition
+                                    </a>
+                                  </div>
+                                <hr>
+                                  <hr>
+                                  <label for="customRange1" class="form-label"> Price </label>
+                                <input type="range" class="form-range" id="customRange1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="container">
+                    <h3 style="text-align: center;">Avaliable Books</h3>
+                    <hr>
+                    <div class="container">
+                        <div class="card-group">
+                            <div class="row">
+                                {% for post in posts.items %}
+                                <div class="col-md-4 mb-3">
+                                    <div class="card mx-auto h-100 shadow-lg p-3 mb-5 rounded"
+                                        style="width:15rem; background-color: #ebedf0;">
+                                        <div class="wrapper">
+                                            <img class="card-img-top"
+                                                src="{{ url_for('static', filename='posts/'+post.cover_photo) }}"
+                                                class="img-fluid" alt="book cover">
+                                            </img>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title"><b>{{ post.title }}</b></h5>
+                                            <h6 class="card-subtitle mb-2 text-muted">ISBN-10: <b>{{ post.isbn }}</b>
+                                            </h6>
+                                            <h6 class="card-subtitle mb-2 text-muted">Condition:
+                                                <b>{{post.book_condition}}</b>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container" style="padding-top: 15px; padding-bottom: 15px;">
+                      {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                      {% if page_num %}
+                        {% if posts.page == page_num %}
+                          <a class="btn btn-info mb-4" href="{{ url_for('buy_page', page=page_num) }}">{{ page_num }}</a>
+                        {% else %}
+                          <a class="btn btn-outline-info mb-4" href="{{ url_for('buy_page', page=page_num) }}">{{ page_num }}</a>
+                        {% endif %}
+                      {% else %}
+                        ...
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+                
+            </div>
+            
+        </div>
     </div>
-</div>
-
-{% endblock content %}
+    {% endblock %}
