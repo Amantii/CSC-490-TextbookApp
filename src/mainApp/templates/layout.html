@@ -18,7 +18,7 @@
     {% endblock %}
 
     <!-- CUSTOM FONT FOR HOMEPAGE, ETC.. FROM GOOGLE FONTS -->
-    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
 
     <!-- change page title as needed -->
@@ -50,10 +50,13 @@
                     <!-- change what shows up in navbar based on if user is logged in or not -->
                     <div class="navbar-nav">
                         {% if current_user.is_authenticated %}
-                        <a class="btn btn-pill btn-outline-secondary custom-btn" href="{{ url_for('logout_page') }}">Logout</a>
+                        <a class="nav-item nav-link" href="{{ url_for('logout_page') }}">Logout</a>
                         <a class="nav-item nav-link" href="{{ url_for('profile_page') }}">Profile</a>
+                        {% if current_user.email == "admin@admin.admin"%}
+                        <a class="nav-item nav-link" href="{{ url_for('admin_page') }}">Admin</a>
+                        {% endif %}
                         {% else %}
-                        <a class="btn btn-pill btn-outline-secondary custom-btn" href="{{ url_for('login_page') }}">Login</a>
+                        <a class="btn btn-pill btn-primary" href="{{ url_for('login_page') }}">Login</a>
                         <a class="nav-item nav-link" href="{{ url_for('register_page') }}">Register</a>
                         {% endif %}
                     </div>
@@ -65,24 +68,24 @@
     <div class="container" style="padding-top: 10px;">
         <!-- warning message popup -->
         <main role="main" class="container">
-          <div class="row">
-            <div class="col-md-12 mt-5">
-              {% with messages =get_flashed_messages(with_categories=true) %}
-              {%if messages%}
-              {%for category, message in messages%}
-              <div class="alert alert-{{category}}">
-                  <button type="button" class="close" data-dismiss="alert" aria-label="close">
-                      <span aria-hidden="true">x</span>
-                  </button>
-                {{message}}
-              </div>
-              {% endfor %}
-              {% endif %}
-              {%endwith%}
+            <div class="row">
+                <div class="col-md-12 mt-5">
+                    {% with messages =get_flashed_messages(with_categories=true) %}
+                    {%if messages%}
+                    {%for category, message in messages%}
+                    <div class="alert alert-{{category}}">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">x</span>
+                        </button>
+                        {{message}}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {%endwith%}
+                </div>
             </div>
-          </div>
         </main>
-      </div>
+    </div>
 
     <!-- MAIN BODY CONTENT (MOVED; USED TO BE LINE 69)-->
     {% block content %}{% endblock %}
