@@ -1,13 +1,157 @@
-<!-- handles about page content -->
 {% extends "layout.html" %}
 
 {% block content %}
+<!DOCTYPE html>
+<html>
 
-<div class="container" style="padding-top: 20px;">
-    <div class="container">
-        <h1>temporary about page</h1>
-        <p>temporary about page</p>
+<head>
+    <style>
+        .social-link {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            border-radius: 50%;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .social-link:hover,
+        .social-link:focus {
+            background: #ddd;
+            text-decoration: none;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="bg-light">
+            <div class="container py-5">
+                <div class="row h-100 align-items-center py-5">
+                    <div class="col-lg-6">
+                        <h1 class="display-4">About us</h1>
+                        <p class="lead text-muted mb-0">Our objective is to connect students with each other for
+                            textbook sales and exchanges, taking advantage of the massive used textbook market.</p>
+                    </div>
+                    <div class="col-lg-6 d-none d-lg-block"><img
+                            src="https://res.cloudinary.com/mhmd/image/upload/v1556834136/illus_kftyh4.png" alt=""
+                            class="img-fluid"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white py-5">
+            <div class="container py-5">
+                <div class="row align-items-center mb-5">
+                    <div class="col-lg-6 order-2 order-lg-1"><i class="fa fa-bar-chart fa-2x mb-3 text-primary"></i>
+                        <h2 class="font-weight-light">Student to Student Sales</h2>
+                        <p class="font-italic text-muted mb-4"> </p><a href="/buy"
+                            class="btn btn-light px-5 rounded-pill shadow-sm">Browse Now</a>
+                    </div>
+                    <div class="col-lg-5 px-5 mx-auto order-1 order-lg-2"><img
+                            src="https://res.cloudinary.com/mhmd/image/upload/v1556834139/img-1_e25nvh.jpg" alt=""
+                            class="img-fluid mb-4 mb-lg-0"></div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-lg-5 px-5 mx-auto"><img
+                            src="https://res.cloudinary.com/mhmd/image/upload/v1556834136/img-2_vdgqgn.jpg" alt=""
+                            class="img-fluid mb-4 mb-lg-0"></div>
+                    <div class="col-lg-6"><i class="fa fa-leaf fa-2x mb-3 text-primary"></i>
+                        <h2 class="font-weight-light">Sell to Other Students</h2>
+                        <p class="font-italic text-muted mb-4"> </p><a href="/sell"
+                            class="btn btn-light px-5 rounded-pill shadow-sm">Sell Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-light py-5">
+            <div class="container py-5">
+                <div class="row mb-4">
+                    <div class="col-lg-5">
+                        <h2 class="display-4 font-weight-light">Our team</h2>
+                        <p class="font-italic text-muted"></p>
+                    </div>
+                </div>
+
+                <div class="row text-center">
+                    <!-- Team item-->
+                    <div class="col-xl-3 col-sm-6 mb-5">
+                        <div class="bg-white rounded shadow-sm py-5 px-4"><img
+                                src="https://res.cloudinary.com/mhmd/image/upload/v1556834132/avatar-4_ozhrib.png"
+                                alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                            <h5 class="mb-0">Amina Fraz</h5><span class="small text-uppercase text-muted">Random Girl
+                                #1</span>
+                        </div>
+                    </div>
+                    <!-- End-->
+
+                    <!-- Team item-->
+                    <div class="col-xl-3 col-sm-6 mb-5">
+                        <div class="bg-white rounded shadow-sm py-5 px-4"><img
+                                src="http://blog.richmond.edu/heroes/files/2014/02/tumblr_inline_msi7ybNRfg1qz4rgp-300x291.jpg"
+                                alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                            <h5 class="mb-0">Ilyass Sfar</h5><span class="small text-uppercase text-muted">Random Guy
+                                #1</span>
+                        </div>
+                    </div>
+                    <!-- End-->
+
+                    <!-- Team item-->
+                    <div class="col-xl-3 col-sm-6 mb-5">
+                        <div class="bg-white rounded shadow-sm py-5 px-4"><img
+                                src="https://res.cloudinary.com/mhmd/image/upload/v1556834133/avatar-2_f8dowd.png"
+                                alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                            <h5 class="mb-0">Alejandro Penaloza</h5><span class="small text-uppercase text-muted">Random
+                                Guy #2</span>
+                        </div>
+                    </div>
+                    <!-- End-->
+
+                    <!-- Team item-->
+                    <div class="col-xl-3 col-sm-6 mb-5">
+                        <div class="bg-white rounded shadow-sm py-5 px-4"><img
+                                src="https://res.cloudinary.com/mhmd/image/upload/v1556834133/avatar-1_s02nlg.png"
+                                alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                            <h5 class="mb-0">Amantii Samson</h5><span class="small text-uppercase text-muted">Random Guy
+                                #3</span>
+                        </div>
+                    </div>
+                    <!-- End-->
+
+                    <!-- Team item-->
+                    <div class="col-xl-3 col-sm-6 mb-5">
+                        <div class="bg-white rounded shadow-sm py-5 px-4"><img
+                                src="https://secure.gravatar.com/avatar/0820737816ced640f649ed4433d43d35?s=96&d=mm&r=g"
+                                alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                            <h5 class="mb-0">Honey Kumar</h5><span class="small text-uppercase text-muted">Random Guy
+                                #4</span>
+                        </div>
+                    </div>
+                    <!-- End-->
+                    <!-- Team item-->
+                    <div class="col-xl-3 col-sm-6 mb-5">
+                        <div class="bg-white rounded shadow-sm py-5 px-4"><img
+                                src="https://res.cloudinary.com/mhmd/image/upload/v1556834130/avatar-3_hzlize.png"
+                                alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                            <h5 class="mb-0">Quinn Tjin-a-soe </h5><span class="small text-uppercase text-muted">Random
+                                Guy #5</span>
+                        </div>
+                    </div>
+                    <!-- End-->
+                </div>
+            </div>
+        </div>
+
+
     </div>
-</div>
+</body>
+
+</html>
 
 {% endblock content %}

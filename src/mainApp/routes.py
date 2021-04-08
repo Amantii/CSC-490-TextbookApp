@@ -5,15 +5,30 @@ from mainApp.forms import RegistrationForm, LoginForm, SellForm
 from mainApp.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
 from werkzeug.utils import secure_filename
+from flask_admin import Admin
+from flask_admin.contrib import sqla
+from flask_admin.contrib.sqla import ModelView
 import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 ALLOWED_EXTENSIONS = {'jpg', 'jpeg'}
 
+admin=Admin(app)
+admin.add_view(ModelView(User, db.session))
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+@app.route('/amd')
+@login_required
+def admin_page():
+    if(current_user.email=="admin@admin.admin"):
+        class MyModelView(sqla.ModelView):
+            def is_accessible(self):
+                return True
+        return redirect('/admin')
+    else:
+       return redirect('/home')
 
 @app.route('/')
 @app.route('/home')
@@ -22,7 +37,7 @@ def home_page():
     return render_template('home.html', posts=posts)
 
 
-@app.route('/about')
+@app.route('/about/')
 def about_page():
     return render_template('about.html', title='About')
 
@@ -78,9 +93,11 @@ def register_page():
     return render_template('register.html', title='Register', form=form)
 
 
-@app.route('/buy')
+@app.route('/buy/')
 def buy_page():
-    return render_template('buy.html', title='Buy')
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.paginate(page=page, per_page=9)
+    return render_template('buy.html', title='Buy', posts=posts)
 
 
 @app.route('/sell', methods=['GET', 'POST'])
@@ -114,6 +131,7 @@ def logout_page():
     logout_user()
     return redirect(url_for('home_page'))
 
+
 @app.route("/delete_post/<id>", methods=['GET', 'POST'])
 @login_required
 def delete_post(id):
@@ -121,6 +139,7 @@ def delete_post(id):
     db.session.commit()
     flash('Post Deleted Successfully')
     return redirect(url_for('profile_page'))
+
 
 # TO-DO (ALEX) --> ADD A EDIT ROUTE FOR USERS TO UPDATE POSTS
 """
@@ -138,3 +157,8 @@ def profile_page():
     profile = User.query.filter_by(username=current_user.username).first()
     print(profile)
     return render_template('profile.html', title='Profile', posts=posts, profile=profile)
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
