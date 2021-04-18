@@ -50,13 +50,13 @@
                     <!-- change what shows up in navbar based on if user is logged in or not -->
                     <div class="navbar-nav">
                         {% if current_user.is_authenticated %}
-                        <a class="nav-item nav-link" href="{{ url_for('logout_page') }}">Logout</a>
+                        <a class="btn btn-pill btn-outline-secondary custom-btn" href="{{ url_for('logout_page') }}">Logout</a>
                         <a class="nav-item nav-link" href="{{ url_for('profile_page') }}">Profile</a>
                         {% if current_user.email == "admin@admin.admin"%}
                         <a class="nav-item nav-link" href="{{ url_for('admin_page') }}">Admin</a>
                         {% endif %}
                         {% else %}
-                        <a class="btn btn-pill btn-primary" href="{{ url_for('login_page') }}">Login</a>
+                        <a class="btn btn-pill btn-outline-secondary custom-btn" href="{{ url_for('login_page') }}">Login</a>
                         <a class="nav-item nav-link" href="{{ url_for('register_page') }}">Register</a>
                         {% endif %}
                     </div>
