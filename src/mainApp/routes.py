@@ -33,7 +33,7 @@ def admin_page():
 @app.route('/')
 @app.route('/home')
 def home_page():
-    posts = Post.query.all()
+    posts = Post.query.order_by(Post.date_posted.desc()).limit(4)
     return render_template('home.html', posts=posts)
 
 
@@ -173,3 +173,10 @@ def page_not_found(e):
 @app.route('/compare/')
 def compare_page():
     return render_template('compare.html', title='Compare')
+
+@app.route("/view_profile/<user_id>", methods=['GET', 'POST'])
+def view_profile(user_id):
+    '''All information user are fetching from data base'''
+    posts = Post.query.filter_by(user_id=user_id)
+    profile = User.query.filter_by(id=user_id).first()
+    return render_template('view_profile.html', title='Profile', posts=posts, profile=profile)
