@@ -96,7 +96,14 @@ def register_page():
 @app.route('/buy/')
 def buy_page():
     page = request.args.get('page', 1, type=int)
-    posts = Post.query.paginate(page=page, per_page=9)
+    if request.args.get('book_condition'):
+        query = request.args.get('book_condition')
+        posts = Post.query.filter(Post.book_condition==query).paginate(page=page, per_page=9)
+    elif request.args.get('Search'):
+        query = request.args.get('Search')
+        posts = Post.query.filter(Post.title.contains(query)).paginate(page=page, per_page=9)
+    else:
+        posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=9)
     return render_template('buy.html', title='Buy', posts=posts)
 
 
@@ -162,3 +169,7 @@ def profile_page():
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
+
+@app.route('/compare/')
+def compare_page():
+    return render_template('compare.html', title='Compare')
