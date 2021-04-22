@@ -1,4 +1,4 @@
-<!-- handles user account page content -->
+<!-- handles buy page content -->
 {% extends "layout.html" %}
 
 {% block css %}
@@ -15,30 +15,19 @@
           <div class="card-body">
             <div class="d-flex flex-column align-items-center text-center">
               <div class="mt-3">
-                <p>Filters</p>
-                <div class="input-group">
-                  <input type="search" class="form-control rounded" placeholder="search" aria-label="Search"
-                    aria-describedby="search-addon" />
-                  <button type="button" class="btn btn-outline-primary" style="padding-left: 10px;">search</button>
-                </div>
+                <form action="{{ url_for('buy_page') }}" method="get">
+                  <input type="search" class="form-control rounded" placeholder="Search" name="Search">
+                  <hr>
+                  <button type="submit" class="btn btn-outline-primary" style="padding-left: 10px;">Search</button>
+                </form>
                 <hr>
-                <div class="dropdown">
-                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    Subject
-                  </a>
-                </div>
+                <a href="/buy/?book_condition=Good" class="btn btn-secondary" role="button">Good Book Condition</a>
                 <hr>
-                <div class="dropdown">
-                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    Condition
-                  </a>
-                </div>
+                <a href="/buy/?book_condition=New" class="btn btn-secondary" role="button">New Book Condition</a>
                 <hr>
+                <a href="/buy/?book_condition=Poor" class="btn btn-secondary" role="button">Poor Book Condition</a>
                 <hr>
-                <label for="customRange1" class="form-label"> Price </label>
-                <input type="range" class="form-range" id="customRange1">
+                <a href="/buy/" class="btn btn-success" role="button">Reset Conditions</a>
               </div>
             </div>
           </div>
@@ -62,11 +51,20 @@
                     </div>
                     <div class="card-body">
                       <h5 class="card-title"><b>{{ post.title }}</b></h5>
-                      <h6 class="card-subtitle mb-2 text-muted">ISBN-10: <b>{{ post.isbn }}</b>
+                      <h6 class="card-subtitle mb-2 text-muted">ISBN-13: <b>{{ post.isbn }}</b>
                       </h6>
                       <h6 class="card-subtitle mb-2 text-muted">Condition:
                         <b>{{post.book_condition}}</b>
                       </h6>
+                      <h6 class="card-subtitle mb-2 text-muted">Asking Price: $
+                        <b>{{post.book_price}}</b>
+                      </h6>
+                      <h6 class="card-subtitle mb-2 text-muted">Posted:
+                        <b>{{post.date_posted}}</b>
+                      </h6>
+                      <center> <a href="/compare/" class="card-link btn btn-outline-primary">Compare Price</a> </center>
+                      <hr>
+                      <center> <a href="/view_profile/{{ post.user_id }}" class="card-link btn btn-outline-primary">Contact Seller</a> </center>
                     </div>
                   </div>
                 </div>
@@ -88,9 +86,7 @@
             {% endfor %}
           </div>
         </div>
-
       </div>
-
     </div>
   </div>
   {% endblock %}

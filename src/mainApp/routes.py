@@ -33,7 +33,7 @@ def admin_page():
 @app.route('/')
 @app.route('/home')
 def home_page():
-    posts = Post.query.all()
+    posts = Post.query.order_by(Post.date_posted.desc()).limit(4)
     return render_template('home.html', posts=posts)
 
 
@@ -96,7 +96,14 @@ def register_page():
 @app.route('/buy/')
 def buy_page():
     page = request.args.get('page', 1, type=int)
-    posts = Post.query.paginate(page=page, per_page=9)
+    if request.args.get('book_condition'):
+        query = request.args.get('book_condition')
+        posts = Post.query.filter(Post.book_condition==query).paginate(page=page, per_page=9)
+    elif request.args.get('Search'):
+        query = request.args.get('Search')
+        posts = Post.query.filter(Post.title.contains(query)).paginate(page=page, per_page=9)
+    else:
+        posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=9)
     return render_template('buy.html', title='Buy', posts=posts)
 
 
@@ -162,3 +169,14 @@ def profile_page():
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
+
+@app.route('/compare/')
+def compare_page():
+    return render_template('compare.html', title='Compare')
+
+@app.route("/view_profile/<user_id>", methods=['GET', 'POST'])
+def view_profile(user_id):
+    '''All information user are fetching from data base'''
+    posts = Post.query.filter_by(user_id=user_id)
+    profile = User.query.filter_by(id=user_id).first()
+    return render_template('view_profile.html', title='Profile', posts=posts, profile=profile)
