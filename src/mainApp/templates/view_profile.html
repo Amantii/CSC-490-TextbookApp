@@ -21,7 +21,7 @@
                                 <p class="text-secondary mb-1">Email for Contact</p>
                                 <p class="text-muted font-size-sm">{{ profile.email }}</p>
                                 {# <button class="btn btn-primary">Follow</button>#}
-                                {#<button class="btn btn-outline-primary">Change Profile Picture</button>#}
+                                <a href="mailto:{{ profile.email }}" class="card-link btn btn-outline-primary">Contact</a>
                                 {#<button class="btn btn-outline-primary">Message</button>#}
                             </div>
                         </div>
@@ -38,7 +38,7 @@
             </div>
             <div class="col-md-9">
                 <div class="container">
-                    <h3 style="text-align: center;">Your Bookshelf</h3>
+                    <h3 style="text-align: center;">The Bookshelf</h3>
                     <hr>
                     <div class="container">
                         <div class="card-group">
@@ -61,8 +61,6 @@
                                                 <b>{{post.book_condition}}</b>
                                             </h6>
                                             {#<a href="#" class="card-link btn btn-warning">Edit</a>#}
-                                            <a href="delete_post/{{ post.id }}" class="card-link btn btn-outline-danger"
-                                                onclick="return confirm('Are you sure you want to delete this textbook?')">Delete</a>
                                         </div>
                                     </div>
                                 </div>

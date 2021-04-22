@@ -25,9 +25,9 @@
                 <hr>
                 <a href="/buy/?book_condition=New" class="btn btn-secondary" role="button">New Book Condition</a>
                 <hr>
-                <a href="/buy/?book_condition=Bad" class="btn btn-secondary" role="button">Bad Book Condition</a>
+                <a href="/buy/?book_condition=Poor" class="btn btn-secondary" role="button">Poor Book Condition</a>
                 <hr>
-                <a href="/buy/" class="btn btn-success" role="button">Rest Conditions</a>
+                <a href="/buy/" class="btn btn-success" role="button">Reset Conditions</a>
               </div>
             </div>
           </div>
@@ -62,9 +62,9 @@
                       <h6 class="card-subtitle mb-2 text-muted">Posted:
                         <b>{{post.date_posted}}</b>
                       </h6>
-                      <center> <a class="card-link btn btn-outline-primary">Compare Price</a> </center>
+                      <center> <a href="/compare/" class="card-link btn btn-outline-primary">Compare Price</a> </center>
                       <hr>
-                      <center> <a class="card-link btn btn-outline-primary">Contact Seller</a> </center>
+                      <center> <a href="/view_profile/{{ post.user_id }}" class="card-link btn btn-outline-primary">Contact Seller</a> </center>
                     </div>
                   </div>
                 </div>

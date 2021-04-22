@@ -18,16 +18,7 @@ https://codepen.io/techiediaries/pen/MWgVKZW
   </div>
 </header>
 
-<!-- SEARCH BAR -->
-<div class="container" style="padding-top: 15px; padding-bottom: 15px;">
-  <div class="input-group">
-    <input type="search" class="form-control rounded" placeholder="Looking for something more specific?"
-      aria-label="Search" aria-describedby="search-addon" />
-    <button type="button" class="btn btn-outline-primary" style="padding-left: 5px;">search</button>
-  </div>
-</div>
-
-<div class="row" style="padding-bottom: 20px;">
+<div class="row" style="padding-bottom: 20px; padding-top: 20px;">
   <div class="col">
     <hr>
   </div>
@@ -53,7 +44,7 @@ https://codepen.io/techiediaries/pen/MWgVKZW
           <h5 class="card-title"><b>{{ post.title }}</b></h5>
           <h6 class="card-subtitle mb-2 text-muted">ISBN-10: <b>{{ post.isbn }}</b></h6>
           <h6 class="card-subtitle mb-2 text-muted">Condition: <b>{{ post.book_condition }}</b></h6>
-          <a href="mailto:{{ post.contact }}" class="card-link btn btn-outline-primary">Interested?</a>
+          <a href="view_profile/{{ post.user_id }}" class="card-link btn btn-outline-primary">Interested?</a>
         </div>
       </div>
     </div>
@@ -61,5 +52,13 @@ https://codepen.io/techiediaries/pen/MWgVKZW
   </div>
 </div>
 
+<div class="row" style="padding-bottom: 20px; padding-top: 20px;">
+  <div class="col">
+    <hr>
+  </div>
+  <a href="{{ url_for('buy_page') }}" class="card-link btn btn-outline-primary">SHOW ME MORE!</a>
+  <div class="col">
+    <hr>
+  </div>
 </div>
 {% endblock content %}
