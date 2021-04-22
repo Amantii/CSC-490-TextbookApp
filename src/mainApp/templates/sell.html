@@ -10,81 +10,81 @@
                     <legend class="border-bottom mb-4">Have A Book To Sell?</legend>
                     <div class="form-group">
                         {{ form.title.label(class="form-control-label") }}
-    
+
                         {% if form.title.errors %}
-                            {{ form.title(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.title.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
+                        {{ form.title(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.title.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
                         {% else %}
-                            {{ form.title(class="form-control form-control-lg") }}
+                        {{ form.title(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
                     <div class="form-group">
                         {{ form.isbn.label(class="form-control-label") }}
                         {% if form.isbn.errors %}
-                            {{ form.isbn(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.isbn.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
+                        {{ form.isbn(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.isbn.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
                         {% else %}
-                            {{ form.isbn(class="form-control form-control-lg") }}
+                        {{ form.isbn(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
                     <div class="form-group">
                         {{ form.book_price.label(class="form-control-label") }}
                         {% if form.book_price.errors %}
-                            {{ form.book_price(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.book_price.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
+                        {{ form.book_price(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.book_price.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
                         {% else %}
-                            {{ form.book_price(class="form-control form-control-lg") }}
+                        {{ form.book_price(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
                     <div class="form-group">
                         {{ form.book_condition.label(class="form-control-label") }}
                         {% if form.book_condition.errors %}
-                            {{ form.book_condition(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.book_condition.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
+                        {{ form.book_condition(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.book_condition.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
                         {% else %}
-                            {{ form.book_condition(class="form-control form-control-lg") }}
+                        {{ form.book_condition(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
                     <div class="form-group">
                         {{ form.contact.label(class="form-control-label") }}
                         {% if form.contact.errors %}
-                            {{ form.contact(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.contact.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
+                        {{ form.contact(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.contact.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
                         {% else %}
-                            {{ form.contact(class="form-control form-control-lg") }}
+                        {{ form.contact(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
                     <div class="form-group">
                         {{ form.cover_page.label(class="form-control-label") }}
                         {% if form.cover_page.errors %}
-                            {{ form.cover_page(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.cover_page.errors %}
-                                    <span>{{ error }}</span>
-                                {% endfor %}
-                            </div>
+                        {{ form.cover_page(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.cover_page.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
                         {% else %}
-                            {{ form.cover_page(class="form-control form-control-lg") }}
+                        {{ form.cover_page(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
                 </fieldset>
@@ -94,5 +94,5 @@
             </form>
         </div>
     </div>
-</div> 
+</div>
 {% endblock %}

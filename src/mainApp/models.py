@@ -49,3 +49,6 @@ class Review(db.Model):
 
     def __repr__(self):
         return f"Review('{self.review}', '{self.rating}', '{self.user_id}')"
+
+db.create_all()
+db.session.commit()
