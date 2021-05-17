@@ -5,7 +5,7 @@ from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationE
 from mainApp.models import User, Post
 from flask_wtf.file import FileField, FileRequired
 
-
+#form to create a new user
 class RegistrationForm(FlaskForm):
     '''Registration form validation'''
     username = StringField('Username', validators=[
@@ -31,14 +31,14 @@ class RegistrationForm(FlaskForm):
             raise ValidationError(
                 'That email is taken. Please choose a different one.')
 
-
+#login form
 class LoginForm(FlaskForm):
     '''Login form validation'''
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Login')
 
-
+#form for user to post a textbook for sale
 class SellForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired(), Length(min=2, max=200)])
     isbn = IntegerField('ISBN', validators=[DataRequired()])

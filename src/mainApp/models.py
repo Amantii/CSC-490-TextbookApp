@@ -1,13 +1,15 @@
+#database models for database information
 from mainApp import db, login_manager
 from datetime import datetime
 from flask_login import UserMixin
 
-
+#active user infomration (user sessions)
 @login_manager.user_loader
 def load_user(user_id):
     """user sessions"""
     return User.query.get(int(user_id))
 
+#active user database model
 class User(db.Model, UserMixin):
     """User database model"""
     id = db.Column(db.Integer, primary_key=True)
@@ -21,7 +23,7 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
 
-
+#textbook posts database model
 class Post(db.Model):
     """User post model"""
     id = db.Column(db.Integer, primary_key=True)
